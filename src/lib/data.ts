@@ -15,7 +15,7 @@ export async function fetchPosts() {
 
 export async function fetchTodos() {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 6000));
+    // await new Promise((resolve) => setTimeout(resolve, 6000));
 
     const response = await fetch("https://jsonplaceholder.typicode.com/todos", {
       cache: "no-store",

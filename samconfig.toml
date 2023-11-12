@@ -1,0 +1,10 @@
+version = 0.1
+[default.deploy.parameters]
+stack_name = "next-lambda-streaming"
+resolve_s3 = true
+s3_prefix = "next-lambda-streaming"
+region = "ap-northeast-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+disable_rollback = true
+image_repositories = ["StreamingNextjsFunction=042313712092.dkr.ecr.ap-northeast-1.amazonaws.com/nextlambdastreaming0b9bc1e5/streamingnextjsfunctiona4f2f287repo"]

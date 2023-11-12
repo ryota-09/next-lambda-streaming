@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  output: "standalone",
+  compress: true
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

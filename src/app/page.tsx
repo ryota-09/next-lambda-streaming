@@ -1,9 +1,10 @@
-import Posts from "@/ui/Posts";
-import Text from "@/ui/Text";
 import Todos from "@/ui/Todos";
 import { CardsSkeleton } from "@/ui/skeletons";
 import Image from "next/image";
-import { Suspense } from "react";
+import React, { Suspense } from "react";
+
+const Posts = React.lazy(() => import("@/ui/Posts"));
+const Text = React.lazy(() => import("@/ui/Text"));
 
 export default function Home() {
   return (

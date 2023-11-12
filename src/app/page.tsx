@@ -1,4 +1,5 @@
 import Posts from "@/ui/Posts";
+import Todos from "@/ui/Todos";
 import { CardsSkeleton } from "@/ui/skeletons";
 import Image from "next/image";
 import { Suspense } from "react";
@@ -28,9 +29,18 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <div>
+      <hr />
+      <div className="bg-red-200">
         <Suspense fallback={<CardsSkeleton />}>
+          <h2 className="text-xl font-bold">Posts Area</h2>
           <Posts />
+        </Suspense>
+      </div>
+      <hr />
+      <div className="mt-10 bg-blue-200">
+        <Suspense fallback={<CardsSkeleton />}>
+        <h2 className="text-xl font-bold">Todos Area</h2>
+          <Todos />
         </Suspense>
       </div>
     </main>

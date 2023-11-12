@@ -31,15 +31,15 @@ export default function Home() {
       </div>
       <hr />
       <div className="bg-red-200">
+        <h2 className="text-xl font-bold">Posts Area</h2>
         <Suspense fallback={<CardsSkeleton />}>
-          <h2 className="text-xl font-bold">Posts Area</h2>
           <Posts />
         </Suspense>
       </div>
       <hr />
       <div className="mt-10 bg-blue-200">
-        <Suspense fallback={<CardsSkeleton />}>
         <h2 className="text-xl font-bold">Todos Area</h2>
+        <Suspense fallback={<CardsSkeleton />}>
           <Todos />
         </Suspense>
       </div>

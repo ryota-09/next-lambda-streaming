@@ -1,33 +1,37 @@
-AWSTemplateFormatVersion: "2010-09-09"
-Transform: AWS::Serverless-2016-10-31
-Description: "Sample lambda streaming response SAM template using nextjs"
-Globals:
-  Function:
-    Timeout: 60
+AWSTemplateFormatVersion: 2010-09-09
 
+Description: >-
+  Next.js 13 standalone mode
+Transform:
+  - AWS::Serverless-2016-10-31
+  
 Resources:
-  StreamingNextjsFunction:
+  NextjsLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      MemorySize: 256
       PackageType: Image
       Architectures:
         - x86_64
+      MemorySize: 512
+      Timeout: 30
+      Description: Next.js 13 standalone mode function
       Environment:
         Variables:
           AWS_LWA_INVOKE_MODE: response_stream
-      FunctionUrlConfig:
-        AuthType: NONE
-        InvokeMode: RESPONSE_STREAM
     Metadata:
-      DockerTag: v1
-      DockerContext: ./
+      DockerTag: nodejs18.x-v1
+      DockerContext: ./frontend
       Dockerfile: Dockerfile
-
-Outputs:
-  StreamingNextjsFunctionOutput:
-    Description: "Streaming Nextjs Function ARN"
-    Value: !GetAtt StreamingNextjsFunction.Arn
-  StreamingNextjsFunctionUrlOutput:
-    Description: "nextjs streaming response function url"
-    Value: !GetAtt StreamingNextjsFunctionUrl.FunctionUrl
+  StreamingUrl:
+    Type: AWS::Lambda::Url
+    Properties:
+      TargetFunctionArn: !Ref NextjsLambdaFunction
+      AuthType: NONE
+      InvokeMode: RESPONSE_STREAM
+  PermissionForURLInvoke:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref NextjsLambdaFunction
+      FunctionUrlAuthType: "NONE"
+      Action: lambda:InvokeFunctionUrl
+      Principal: "*"

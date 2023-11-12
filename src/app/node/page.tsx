@@ -1,6 +1,4 @@
-import {
-  RecommendedProducts,
-} from "@/ui/Recommended-products";
+import { RecommendedProducts } from "@/ui/Recommended-products";
 import { Reviews } from "@/ui/Reviews";
 import { SingleProduct } from "@/ui/Single-product";
 import { CardsSkeleton } from "@/ui/skeletons";
@@ -20,11 +18,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             // We intentionally delay the reponse to simulate a slow data
             // request that would benefit from streaming
             `https://app-router-api.vercel.app/api/products?delay=1000&filter=1`,
-            {
-              // We intentionally disable Next.js Cache to better demo
-              // streaming
-              cache: "no-store",
-            }
+            { next: { revalidate: 0 } }
           )}
         />
       </Suspense>
@@ -35,11 +29,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             // We intentionally delay the reponse to simulate a slow data
             // request that would benefit from streaming
             `https://app-router-api.vercel.app/api/reviews?delay=5000`,
-            {
-              // We intentionally disable Next.js Cache to better demo
-              // streaming
-              cache: "no-store",
-            }
+            { next: { revalidate: 0 } }
           )}
         />
       </Suspense>

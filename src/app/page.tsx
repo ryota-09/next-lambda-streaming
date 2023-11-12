@@ -1,4 +1,5 @@
 import Posts from "@/ui/Posts";
+import Text from "@/ui/Text";
 import Todos from "@/ui/Todos";
 import { CardsSkeleton } from "@/ui/skeletons";
 import Image from "next/image";
@@ -40,7 +41,8 @@ export default function Home() {
       <div className="mt-10 bg-blue-200">
         <h2 className="text-xl font-bold">Todos Area</h2>
         <Suspense fallback={<CardsSkeleton />}>
-          <Todos />
+          {/* <Todos /> */}
+          <Text />
         </Suspense>
       </div>
     </main>

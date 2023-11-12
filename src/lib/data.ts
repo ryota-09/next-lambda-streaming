@@ -27,3 +27,18 @@ export async function fetchTodos() {
     throw new Error("Failed to fetch todos data.");
   }
 }
+
+export async function fetchText() {
+  try {
+
+    const response = await fetch("https://hub.dummyapis.com/delay?seconds=8", {
+      cache: "no-store",
+    });
+
+    console.log(response)
+
+    return "サクセス"
+  } catch (error) {
+    throw new Error("Failed to fetch todos data.");
+  }
+}

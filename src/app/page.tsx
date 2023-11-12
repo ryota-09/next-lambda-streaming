@@ -1,4 +1,7 @@
+import Posts from "@/ui/Posts";
+import { CardsSkeleton } from "@/ui/skeletons";
 import Image from "next/image";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -7,7 +10,7 @@ export default function Home() {
         Next.js App on Lambda Web Adapter
       </h1>
       <div className="flex justify-center gap-5">
-        <Image alt="" src="/red.png" width={300} height={200} />
+        <Image alt="" src="/red.png" width={150} height={30} />
         <div>
           <h2 className="text-xl font-bold">Static Area</h2>
           <br />
@@ -24,6 +27,11 @@ export default function Home() {
             テキストテキストテキストテキストテキストテキストテキストテキスト
           </p>
         </div>
+      </div>
+      <div>
+        <Suspense fallback={<CardsSkeleton />}>
+          <Posts />
+        </Suspense>
       </div>
     </main>
   );

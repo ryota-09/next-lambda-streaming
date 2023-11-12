@@ -2,13 +2,12 @@ export async function fetchPosts() {
   try {
     await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    const data = await fetch("https://jsonplaceholder.typicode.com/posts", {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
       cache: "no-cache",
     });
 
-    console.log("Data fetch complete after 3 seconds.");
-    console.log(data.json())
-    return data.json()
+    const data = await response.json()
+    return data
   } catch (error) {
     throw new Error("Failed to fetch posts data.");
   }
